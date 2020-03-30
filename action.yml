@@ -1,0 +1,23 @@
+---
+action: gh-autorebase
+description: Automatically rebases open branches after a merge
+
+inputs:
+  repository-url:
+    description: URL of the repository to work on
+    required: true
+  default-branch:
+    description: Git ref of the default branch
+    required: true
+  merged-branch:
+    description: Git ref of the merged branch
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+  - ${{ inputs.repository-url }}
+  - ${{ inputs.default-branch }}
+  - ${{ inputs.merged-branch }}
+
+# vim: et:sw=2:syntax=2:ts=2:
